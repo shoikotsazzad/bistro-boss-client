@@ -3,6 +3,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 
 const Login = () => {
@@ -14,6 +15,7 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
+    console.log('state in the location:', location.state)
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -32,21 +34,21 @@ const Login = () => {
                 Swal.fire({
                     title: "Login Successfully!!",
                     showClass: {
-                      popup: `
+                        popup: `
                         animate__animated
                         animate__fadeInUp
                         animate__faster
                       `
                     },
                     hideClass: {
-                      popup: `
+                        popup: `
                         animate__animated
                         animate__fadeOutDown
                         animate__faster
                       `
                     }
-                  });
-                  navigate(from, {replace: true});
+                });
+                navigate(from, { replace: true });
             })
     }
 
@@ -96,13 +98,14 @@ const Login = () => {
                         <div className="form-control mt-6 text-center">
                             <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                         </div>
-                        <div className='text-center md:m-4'>
-                        <p><small>New Here?
-                            <Link to="/signUp">Create an account</Link>
-                        </small> </p>
-                    </div>
+                        <div className='text-center md:mt-4'>
+                            <p className='px-'><small>New Here?
+                                <Link to="/signUp">Create an account</Link>
+                            </small> </p>
+                            <SocialLogin></SocialLogin> 
+                        </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>
