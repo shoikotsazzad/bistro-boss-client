@@ -1,16 +1,17 @@
-import React from 'react';
-import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
-import { useForm } from 'react-hook-form';
-import { FaUtensils } from 'react-icons/fa';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
+import { useLoaderData } from "react-router-dom";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { FaUtensils } from "react-icons/fa";
 
 const image_hosting_key = '6a28aef66898f02741c7cd18ed262ace';
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddItems = () => {
+const UpdateItem = () => {
     const { register, handleSubmit, reset } = useForm();
+    const {name, category, recipe, price, _id} = useLoaderData();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const onSubmit = async (data) => {
@@ -32,14 +33,14 @@ const AddItems = () => {
                 image: res.data.data.display_url
             }
             // send menuItem to your server
-            const menuRes = await axiosSecure.post('/menu', menuItem);
+            const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
             console.log(menuRes.data);
-            if(menuRes.data.insertedId){
+            if(menuRes.data.modifiedCount > 0){
                 reset();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is added successfully`,
+                    title: `${data.name} is updated successfully`,
                     showConfirmButton: false,
                     timer: 1500
                   });
@@ -51,20 +52,24 @@ const AddItems = () => {
     return (
         <div>
             <SectionTitle
-                heading="add an item"
-                subHeading="What's new?"
-            ></SectionTitle>
+                heading="Update an Item"
+                subHeading="Refresh Info"
+            >
+
+            </SectionTitle>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)} >
+                    {/* name */}
                     <div className="my-6">
                         <label className="form-control w-full">
                             <div className="label">
                                 <span className="label-text">Recipe Name*</span>
                             </div>
                             <input
+                                defaultValue={name}
                                 type="text"
                                 placeholder="Recipe Name"
-                                {...register("name", { required: true})}
+                                {...register("name", { required: true })}
                                 className="input input-bordered w-full"
                             />
                         </label>
@@ -79,8 +84,8 @@ const AddItems = () => {
                                     <span className="label-text">Category*</span>
                                 </div>
                                 <select
-                                defaultValue="default"
-                                    {...register("category", { required: true})}
+                                    defaultValue={category}
+                                    {...register("category", { required: true })}
                                     className="select select-bordered w-full"
                                 >
                                     <option disabled value="">
@@ -101,9 +106,10 @@ const AddItems = () => {
                                     <span className="label-text">Price*</span>
                                 </div>
                                 <input
+                                    defaultValue={price}
                                     type="number"
                                     placeholder="Price"
-                                    {...register("price", { required: true})}
+                                    {...register("price", { required: true })}
                                     className="input input-bordered w-full"
                                 />
                             </label>
@@ -117,22 +123,23 @@ const AddItems = () => {
                             </div>
                             <br />
                             <textarea
+                            defaultValue={recipe}
                                 className="textarea textarea-bordered h-24 w-full"
                                 placeholder="Recipe Details"
-                                {...register("recipe", { required: true})}
+                                {...register("recipe", { required: true })}
                             ></textarea>
                         </label>
                     </div>
                     {/* file input */}
                     <div className='mb-6'>
-                        <input type="file" 
-                        className="file-input w-full max-w-xs"
-                        {...register("image", { required: true})}
-                         />
+                        <input type="file"
+                            className="file-input w-full max-w-xs"
+                            {...register("image", { required: true })}
+                        />
                     </div>
 
                     <button className='btn btn-sm bg-[#cb8823] border-0 hover:bg-[#43bb49]'>
-                        Add Item <FaUtensils className='ml-4'></FaUtensils>
+                        Update Menu Item <FaUtensils className='ml-4'></FaUtensils>
                     </button>
                 </form>
             </div>
@@ -140,4 +147,4 @@ const AddItems = () => {
     );
 };
 
-export default AddItems;
+export default UpdateItem;

@@ -22,26 +22,46 @@ const Dashboard = () => {
                     {
                         isAdmin ? <>
                             <li>
-                                <NavLink to="/dashboard/adminHome">
+                                <NavLink to="/dashboard/adminHome"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                            : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                    }>
                                     <FaHome></FaHome>
                                     Admin Home
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/addItems">
+                                <NavLink to="/dashboard/addItems"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                            : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                    }>
                                     <FaUtensils></FaUtensils>
                                     AddItems
                                 </NavLink>
                             </li>
 
                             <li>
-                                <NavLink to="/dashboard/manageItems">
+                                <NavLink to="/dashboard/manageItems"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                            : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                    }>
                                     <FaList></FaList>
                                     Manage Items
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/bookings">
+                                <NavLink to="/dashboard/bookings"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                            : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                    }>
                                     <FaBook></FaBook>
                                     Manage Bookings
                                 </NavLink>
@@ -61,32 +81,57 @@ const Dashboard = () => {
                             :
                             <>
                                 <li>
-                                    <NavLink to="/dashboard/userHome">
+                                    <NavLink to="/dashboard/userHome"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                        }>
                                         <FaHome></FaHome>
                                         User Home
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/reservation">
+                                    <NavLink to="/dashboard/reservation"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                        }>
                                         <FaCalendar></FaCalendar>
                                         Reservation
                                     </NavLink>
                                 </li>
 
                                 <li>
-                                    <NavLink to="/dashboard/cart">
+                                    <NavLink to="/dashboard/cart"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                        }>
                                         <FaShoppingCart></FaShoppingCart>
                                         My Cart
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/review">
+                                    <NavLink to="/dashboard/review"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                        }>
                                         <VscCodeReview />
                                         Add Review
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/myBookings">
+                                    <NavLink to="/dashboard/myBookings"
+                                        className={({ isActive }) =>
+                                            isActive
+                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
+                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
+                                        }>
                                         <CiBoxList />
                                         My Bookings
                                     </NavLink>
