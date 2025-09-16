@@ -92,14 +92,14 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/reservation"
+                                    <NavLink to="/dashboard/history"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
                                                 : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
                                         }>
                                         <FaCalendar></FaCalendar>
-                                        Reservation
+                                        Not History
                                     </NavLink>
                                 </li>
 
@@ -126,14 +126,14 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/myBookings"
+                                    <NavLink to="/dashboard/paymentHistory"
                                         className={({ isActive }) =>
                                             isActive
                                                 ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
                                                 : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
                                         }>
                                         <CiBoxList />
-                                        My Bookings
+                                        Payment History
                                     </NavLink>
                                 </li>
                             </>
