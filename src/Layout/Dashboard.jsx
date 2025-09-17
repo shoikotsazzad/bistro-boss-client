@@ -56,17 +56,6 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/bookings"
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
-                                            : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
-                                    }>
-                                    <FaBook></FaBook>
-                                    Manage Bookings
-                                </NavLink>
-                            </li>
-                            <li>
                                 <NavLink to="/dashboard/users"
                                     className={({ isActive }) =>
                                         isActive
@@ -91,18 +80,6 @@ const Dashboard = () => {
                                         User Home
                                     </NavLink>
                                 </li>
-                                <li>
-                                    <NavLink to="/dashboard/history"
-                                        className={({ isActive }) =>
-                                            isActive
-                                                ? "bg-white text-orange-500 rounded-lg px-2" // Active link style
-                                                : "hover:bg-orange-300 rounded-lg px-2"      // Normal hover style
-                                        }>
-                                        <FaCalendar></FaCalendar>
-                                        Not History
-                                    </NavLink>
-                                </li>
-
                                 <li>
                                     <NavLink to="/dashboard/cart"
                                         className={({ isActive }) =>
